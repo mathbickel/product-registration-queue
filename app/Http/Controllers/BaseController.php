@@ -18,9 +18,9 @@ class BaseController extends Controller
         return response()->json($this->model::all());
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-        return response()->json($this->model::find($id));
+        return response()->json($this->model::find($request->id));
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class BaseController extends Controller
         return response()->json($this->model::create($data), 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $data = $request->validate([
             // Add validation rules here
@@ -43,7 +43,7 @@ class BaseController extends Controller
         return response()->json($model);
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $model = $this->model::find($id);
         $model->delete();
