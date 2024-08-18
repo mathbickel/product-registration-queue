@@ -17,4 +17,9 @@ class Product extends Model
         'price',
         'balance'
     ];
+
+    public function getAll()
+    {
+        return Product::all();
+    }
 }

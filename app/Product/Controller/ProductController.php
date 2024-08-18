@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Product\Controller;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Models\Product;
-use Illuminate\Http\Request;
+
 class ProductController extends BaseController
 {
     public function __construct()
