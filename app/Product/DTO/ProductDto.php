@@ -3,6 +3,8 @@
 namespace App\Product\DTO;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
+
 class ProductDto
 {
     public $name;
@@ -10,8 +12,9 @@ class ProductDto
     public $price;
     public $balance;
 
-    public function toArray(): Product
+    public function toProductModel(Request $request): Product
     {
-        return new Product($this->name, $this->description, $this->price, $this->balance);
+        $prod = $request->all();
+        return new Product($prod['name'], $prod['description'], $prod['price'], $prod['balance']);
     }
 }

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 interface BaseRepostory
 {
-    public function all();
+    public function getAll();
 
     public function find(int $id);
 

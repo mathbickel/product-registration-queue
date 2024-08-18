@@ -12,7 +12,7 @@ class ProductRepository implements ContractsProductRepository
         $this->model = $model;
     }
 
-    public function all()
+    public function getAll()
     {
         return $this->model->all();
     }

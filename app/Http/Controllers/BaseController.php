@@ -6,21 +6,21 @@ use Illuminate\Http\Request;
 
 class BaseController extends Controller
 {
-    protected $model;
+    protected $service;
 
-    public function __construct($model)
+    public function __construct($service)
     {
-        $this->model = $model;
+        $this->service = $service;
     }
 
     public function index()
     {
-        return response()->json($this->model::all());
+        return response()->json($this->service::all());
     }
 
     public function show(Request $request)
     {
-        return response()->json($this->model::find($request->id));
+        return response()->json($this->service::find($request->id));
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class BaseController extends Controller
         $data = $request->validate([
             // Add validation rules here
         ]);
-        return response()->json($this->model::create($data), 201);
+        return response()->json($this->service::create($data), 201);
     }
 
     public function update(Request $request, int $id)
@@ -37,16 +37,16 @@ class BaseController extends Controller
             // Add validation rules here
         ]);
 
-        $model = $this->model::find($id);
-        $model->update($data);
+        $service = $this->service::find($id);
+        $service->update($data);
 
-        return response()->json($model);
+        return response()->json($service);
     }
 
     public function destroy(int $id)
     {
-        $model = $this->model::find($id);
-        $model->delete();
+        $service = $this->service::find($id);
+        $service->delete();
 
         return response()->json(null, 204);
     }

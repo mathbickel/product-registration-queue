@@ -17,7 +17,7 @@ class ProductServiceImpl extends ProductService
 
     public function getaAll()
     {
-        $this->repository->all();   
+        $this->repository->getAll();   
     }
 
     public function register(Model $product)
