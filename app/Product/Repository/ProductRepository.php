@@ -3,11 +3,11 @@
 namespace App\Product\Repository;
 
 use App\Product\Repository\Contracts\ProductRepository as ContractsProductRepository;
-use App\Models\Product;
+use Illuminate\Database\Eloquent\Model;
 class ProductRepository implements ContractsProductRepository
 {
     protected $model;
-    public function __construct(Product $model)
+    public function __construct(Model $model)
     {
         $this->model = $model;
     }
@@ -22,9 +22,9 @@ class ProductRepository implements ContractsProductRepository
         return $this->model->find($id);
     }
 
-    public function create(Model $model)
+    public function create(Model $product)
     {
-        return $this->model->create($data);
+        return $this->model->create($product);
     }
 
     public function update(int $id, array $data)

@@ -20,12 +20,13 @@ abstract class ProductService implements BaseServiceProvider
         $this->repository->all();   
     }
 
-    public function register(Product $product)
+    public function register(Model $product)
     {
-        $this->repository->create($product);
+        if ($product instanceof Product) return $this->repository->create($product);
+        return;
     }
 
-    public function update(int $id, Model $model)
+    public function update(int $id, Model $product)
     {
         //TODO
     }

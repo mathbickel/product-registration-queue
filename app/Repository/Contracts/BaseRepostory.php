@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repository\Contracts;
+use Illuminate\Database\Eloquent\Model;
 
 interface BaseRepostory
 {
@@ -8,7 +9,7 @@ interface BaseRepostory
 
     public function find(int $id);
 
-    public function create(array $data);
+    public function create(Model $data);
 
     public function update(int $id, array $data);
 

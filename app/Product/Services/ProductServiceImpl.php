@@ -20,12 +20,12 @@ class ProductServiceImpl extends ProductService
         $this->repository->all();   
     }
 
-    public function register(Product $product)
+    public function register(Model $product)
     {
         $this->repository->create($product);
     }
 
-    public function update(int $id, Model $model)
+    public function update(int $id, Model $product)
     {
         //TODO
     }
