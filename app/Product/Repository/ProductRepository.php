@@ -22,7 +22,7 @@ class ProductRepository implements ContractsProductRepository
         return $this->model->find($id);
     }
 
-    public function create(array $data)
+    public function create(Model $model)
     {
         return $this->model->create($data);
     }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Product\DTO;
+
+use App\Models\Product;
 class ProductDto
 {
     public $name;
@@ -8,11 +10,8 @@ class ProductDto
     public $price;
     public $balance;
 
-    public function __construct(string $name, string $description, float $price, int $balance)
+    public function toArray(): Product
     {
-        $this->name = $name;
-        $this->description = $description;
-        $this->price = $price;
-        $this->balance = $balance;
+        return new Product($this->name, $this->description, $this->price, $this->balance);
     }
 }

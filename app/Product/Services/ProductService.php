@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Product\Services;
+namespace App\Product;
 
+use App\Services\BaseServiceProvider;
 use App\Models\Product;
-use App\Product\ProductService;
 use App\Product\Repository\ProductRepository;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductServiceImpl extends ProductService
+abstract class ProductService implements BaseServiceProvider
 {
     protected $repository;
     public function __construct(Product $product)

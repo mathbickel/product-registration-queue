@@ -2,8 +2,8 @@
 
 namespace App\Product\Controller;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
+use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends BaseController
