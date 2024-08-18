@@ -1,4 +1,5 @@
 <?php
+namespace App\Providers;
 
 use App\Product\Repository\Contracts\ProductRepository;
 use App\Product\Repository\ProductRepository as RepositoryProductRepository;
