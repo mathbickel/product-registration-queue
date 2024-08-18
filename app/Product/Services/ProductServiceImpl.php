@@ -3,11 +3,11 @@
 namespace App\Product\Services;
 
 use App\Models\Product;
-use App\Product\ProductService;
 use App\Product\Repository\ProductRepository;
+use App\Product\Services\ProductService as ServicesProductService;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductServiceImpl extends ProductService
+class ProductServiceImpl extends ServicesProductService
 {
     protected $repository;
     public function __construct(Product $product)
