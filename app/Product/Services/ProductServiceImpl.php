@@ -20,7 +20,12 @@ class ProductServiceImpl extends ServicesProductService
         $this->repository->getAll();   
     }
 
-    public function register(Model $product)
+    public function getById(int $id)
+    {
+        $this->repository->find($id);
+    }
+
+    public function create(Model $product)
     {
         $this->repository->create($product);
     }

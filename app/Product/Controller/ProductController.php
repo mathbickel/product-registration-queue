@@ -6,17 +6,12 @@ use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Product\Services\ProductServiceImpl;
-use App\Product\DTO\ProductDto;
 
 class ProductController extends BaseController
 {
-    protected $service;
-
-    public function __construct(Request $request)
-    {
-        $product = new ProductDto();
-        $this->service = new ProductServiceImpl($product->toProductModel($request));
-        parent::__construct($this->service);
+    public function __construct (
+        protected ProductServiceImpl $service
+    ) {
     }
 
     public function index()
