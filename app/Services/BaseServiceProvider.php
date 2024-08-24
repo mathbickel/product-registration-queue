@@ -2,13 +2,14 @@
 
 namespace App\Services;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 interface BaseServiceProvider
 {
-    public function getaAll();
-    public function getById(int $id);
-    public function create(Model $model);
-    public function update(int $id, Model $model);
-    public function delete(int $id);
+    public function getaAll(): Collection;
+    public function getById(int $id): Model;
+    public function create(Model $model): Model;
+    public function update(int $id, Model $model): Model;
+    public function delete(int $id): bool;
 }

@@ -4,35 +4,37 @@ namespace App\Product\Services;
 
 use App\Services\BaseServiceProvider;
 use App\Models\Product;
-use App\Product\Repository\ProductRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class ProductService implements BaseServiceProvider
 {
     protected $repository;
-    public function __construct(Product $product)
-    {
-        $this->repository = new ProductRepository($product);
+    public function __construct(
+        protected ProductServiceImpl $service
+    ){ 
     }
 
-    public function getaAll()
+    /**
+    * @return Product[]|Collection
+    */
+    public function getaAll(): Collection
     {
-        $this->repository->getAll();   
+        return $this->repository->getAll();   
     }
 
-    public function create(Model $product)
+    public function create(Model $product): Product
     {
-        if ($product instanceof Product) return $this->repository->create($product);
-        return;
+        return $this->repository->create($product);
     }
 
-    public function update(int $id, Model $product)
+    public function update(int $id, Model $product): Product
     {
-        //TODO
+        return $this->repository->update($id, $product);
     }
 
-    public function delete(int $id)
+    public function delete(int $id): bool
     {
-        //TODO
+        return $this->repository->delete($id);
     }
 }
