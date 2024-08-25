@@ -27,12 +27,12 @@ abstract class ProductService implements BaseServiceProvider
     {
         return $this->repository->find($id);
     }
-    public function create(Model $product): Product
+    public function create(array $product): Product
     {
         return $this->repository->create($product);
     }
 
-    public function update(int $id, Model $product): Product
+    public function update(int $id, array $product): Product
     {
         return $this->repository->update($id, $product);
     }

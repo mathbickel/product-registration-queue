@@ -22,8 +22,7 @@ class ProductController extends BaseController
 
     public function store(Request $request)
     {
-        $prod = new ProductDto();
-        return response()->json($this->service->create($prod->toProductModel($request)), 201);
+        return response()->json($this->service->create($request->all()), 201);
     }
 
     public function getById(Request $request)
@@ -33,10 +32,7 @@ class ProductController extends BaseController
 
     public function update(Request $request, int $id)
     {
-        $prod = $this->service->getById($id);
-        $prod = new ProductDto();
-        $res = $this->service->update($id, $prod->toProductModel($request));
-
+        $res = $this->service->update($id, $request->all());
         return response()->json($res);
     }
 
