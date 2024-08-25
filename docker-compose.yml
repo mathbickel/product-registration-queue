@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   app:
-    image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: laravel_app
     working_dir: /var/www
     volumes:
@@ -26,11 +28,11 @@ services:
   db:
     image: mysql:8.0
     container_name: laravel_db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel
-      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: docker_dooca_db
     volumes:
       - dbdata:/var/lib/mysql
     ports:
@@ -38,10 +40,10 @@ services:
     networks:
       - laravel
 
-volumes:
-  dbdata:
-    driver: local
-
 networks:
   laravel:
     driver: bridge
+    
+volumes:
+  dbdata:
+    driver: local
