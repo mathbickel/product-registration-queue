@@ -4,17 +4,17 @@ namespace App\Product\Services;
 
 use App\Services\BaseServiceProvider;
 use App\Models\Product;
+use App\Product\Repository\ProductRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class ProductService implements BaseServiceProvider
 {
-    protected $repository;
     public function __construct(
-        protected ProductServiceImpl $service
+        protected ProductRepository $repository
     ){ 
     }
-
+    
     /**
     * @return Product[]|Collection
     */
@@ -23,6 +23,10 @@ abstract class ProductService implements BaseServiceProvider
         return $this->repository->getAll();   
     }
 
+    public function getById(int $id): Model
+    {
+        return $this->repository->find($id);
+    }
     public function create(Model $product): Product
     {
         return $this->repository->create($product);

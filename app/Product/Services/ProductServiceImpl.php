@@ -5,38 +5,40 @@ namespace App\Product\Services;
 use App\Models\Product;
 use App\Product\Repository\ProductRepository;
 use App\Product\Services\ProductService as ServicesProductService;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductServiceImpl extends ServicesProductService
 {
-    protected $repository;
-    public function __construct(Product $product)
-    {
-        $this->repository = new ProductRepository($product);
+    public function __construct(
+        protected ProductRepository $repository
+    ){ 
     }
 
-    public function getaAll()
+    /**
+    * @return Product[]|Collection
+    */
+    public function getaAll(): Collection
     {
-        $this->repository->getAll();   
+        return $this->repository->getAll();   
     }
 
-    public function getById(int $id)
+    public function getById(int $id): Model
     {
-        $this->repository->find($id);
+        return $this->repository->find($id);
+    }
+    public function create(Model $product): Product
+    {
+        return $this->repository->create($product);
     }
 
-    public function create(Model $product)
+    public function update(int $id, Model $product): Product
     {
-        $this->repository->create($product);
+        return $this->repository->update($id, $product);
     }
 
-    public function update(int $id, Model $product)
+    public function delete(int $id): bool
     {
-        //TODO
-    }
-
-    public function delete(int $id)
-    {
-        //TODO
+        return $this->repository->delete($id);
     }
 }
