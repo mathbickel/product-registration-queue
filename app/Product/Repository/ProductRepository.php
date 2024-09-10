@@ -5,11 +5,12 @@ namespace App\Product\Repository;
 use App\Models\Product;
 use App\Product\Repository\Contracts\ProductRepository as ContractsProductRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductRepository implements ContractsProductRepository
 {
     public function __construct(
-        protected Product $model
+        protected Model $model
     ){
     }
 
@@ -21,17 +22,17 @@ class ProductRepository implements ContractsProductRepository
         return $this->model->all();
     }
 
-    public function find(int $id): Product
+    public function find(int $id): Model
     {
         return $this->model->find($id);
     }
 
-    public function create(array $product): Product
+    public function create(array $product): Model
     {
         return $this->model->create($product);
     }
 
-    public function update(int $id, array $data): Product
+    public function update(int $id, array $data): Model
     {
         $record = $this->find($id);
         $record->update($data);

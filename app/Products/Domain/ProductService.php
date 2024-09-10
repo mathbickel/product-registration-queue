@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Product\Services;
+namespace App\Products\Domain;
 
 use App\Services\BaseServiceProvider;
-use App\Models\Product;
 use App\Product\Repository\ProductRepository;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
+use App\Products\Domain\ProductData;
 
 abstract class ProductService implements BaseServiceProvider
 {
@@ -27,7 +26,7 @@ abstract class ProductService implements BaseServiceProvider
     {
         return $this->repository->find($id);
     }
-    public function create(array $product): Product
+    public function create(array $product): ProductData
     {
         return $this->repository->create($product);
     }
