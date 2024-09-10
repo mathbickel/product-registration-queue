@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Product\Repository\Contracts;
+namespace App\Products\Domain;
 
 use App\Repository\Contracts\BaseRepostory;
 
