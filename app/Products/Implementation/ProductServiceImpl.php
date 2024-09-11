@@ -8,7 +8,7 @@ use App\Products\Domain\ProductService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductServiceImpl extends ProductService
+class ProductServiceImpl implements ProductService
 {
     public function __construct(
         protected ProductRepository $repository
