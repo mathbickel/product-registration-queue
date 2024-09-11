@@ -2,8 +2,7 @@
 
 namespace App\Products\Implementation;
 
-use App\Models\Product;
-use App\Product\Repository\ProductRepository;
+use App\Products\Domain\ProductRepository;
 use App\Products\Domain\ProductService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +15,7 @@ class ProductServiceImpl implements ProductService
     }
 
     /**
-    * @return Product[]|Collection
+    * @return ProductData[]|Collection
     */
     public function getaAll(): Collection
     {

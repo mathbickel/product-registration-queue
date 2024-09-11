@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Products\Infra;
 abstract class ProductModel
 {
     protected int $id;
@@ -15,5 +16,16 @@ abstract class ProductModel
         $this->description = $description;
         $this->price = $price;
         $this->category = $category;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'category' => $this->category
+        ];
     }
 }

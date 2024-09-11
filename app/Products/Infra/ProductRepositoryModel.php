@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use ProductModel;
 
-class ProductRepositoryModel extends Model implements ProductRepository
+class ProductRepositoryModel implements ProductRepository
 {
     public function __construct(
-        protected ProductModel $product
+        protected ProductModel $product,
+        protected Model $model
     ){
     }
 
@@ -37,7 +38,7 @@ class ProductRepositoryModel extends Model implements ProductRepository
     {
         $record = $this->find($id);
         $record->update($data);
-        return $record;
+        return $this->find($id);
     }
 
     public function delete(int $id): bool
