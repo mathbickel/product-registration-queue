@@ -2,7 +2,7 @@
 
 namespace App\Products\Domain;
 
-abstract class ProductData
+class ProductData implements Product
 {
     protected int $id;
     protected string $name;
@@ -63,5 +63,30 @@ abstract class ProductData
     public function getCategories(): string
     {
         return $this->category;
+    }
+
+    public function store(array $data): ProductData
+    {
+        throw new \Exception('Method not implemented');
+    }
+
+    public function getById(int $id): ProductData
+    {
+        throw new \Exception('Method not implemented');
+    }
+
+    public function getAll(): array
+    {
+        return [];
+    }   
+
+    public function update(int $id, array $data): ProductData
+    {
+        throw new \Exception('Method not implemented');
+    }
+
+    public function delete(int $id): void
+    {
+        throw new \Exception('Method not implemented');
     }
 }

@@ -1,37 +1,12 @@
 <?php
 
-use App\Products\Domain\IProduct;
-use App\Products\Domain\ProductData;
+namespace App\Products\Domain;
 
-class Product extends ProductData implements IProduct
+interface Product
 {
-    public function __construct(ProductData $productData)
-    {
-        parent::__construct($productData);
-    }
-
-    public function store(array $data): ProductData
-    {
-        throw new \Exception('Method not implemented');
-    }
-
-    public function getById(int $id): ProductData
-    {
-        throw new \Exception('Method not implemented');
-    }
-
-    public function getAll(): array
-    {
-        return [];
-    }   
-
-    public function update(int $id, array $data): ProductData
-    {
-        throw new \Exception('Method not implemented');
-    }
-
-    public function delete(int $id): void
-    {
-        throw new \Exception('Method not implemented');
-    }
+    public function store(array $data);
+    public function getById(int $id);
+    public function getAll(): array;
+    public function update(int $id, array $data);
+    public function delete(int $id): void;
 }
