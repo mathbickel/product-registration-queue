@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Product\Services;
+namespace App\Products\Implementation;
 
 use App\Models\Product;
 use App\Product\Repository\ProductRepository;
-use App\Product\Services\ProductService as ServicesProductService;
+use App\Products\Domain\ProductService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductServiceImpl extends ServicesProductService
+class ProductServiceImpl implements ProductService
 {
     public function __construct(
         protected ProductRepository $repository
@@ -27,12 +27,12 @@ class ProductServiceImpl extends ServicesProductService
     {
         return $this->repository->find($id);
     }
-    public function create(array $product): Product
+    public function create(array $product): Model
     {
         return $this->repository->create($product);
     }
 
-    public function update(int $id, array $product): Product
+    public function update(int $id, array $product): Model
     {
         return $this->repository->update($id, $product);
     }
