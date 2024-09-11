@@ -6,11 +6,12 @@ use App\Models\Product;
 use App\Products\Domain\ProductRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use ProductModel;
 
-class ProductRepositoryModel implements ProductRepository
+class ProductRepositoryModel extends Model implements ProductRepository
 {
     public function __construct(
-        protected Model $model
+        protected ProductModel $product
     ){
     }
 
