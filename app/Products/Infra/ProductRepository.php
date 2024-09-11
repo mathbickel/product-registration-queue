@@ -3,11 +3,11 @@
 namespace App\Products\Infra;
 
 use App\Models\Product;
-use App\Product\Repository\Contracts\ProductRepository as ContractsProductRepository;
+use App\Products\Domain\IProductRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductRepository implements ContractsProductRepository
+class ProductRepository implements IProductRepository
 {
     public function __construct(
         protected Model $model
