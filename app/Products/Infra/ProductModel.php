@@ -1,6 +1,10 @@
 <?php
 
-abstract class ProductModel
+namespace App\Products\Infra;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ProductModel extends Model
 {
     protected int $id;
     protected string $name;
@@ -15,5 +19,16 @@ abstract class ProductModel
         $this->description = $description;
         $this->price = $price;
         $this->category = $category;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'category' => $this->category
+        ];
     }
 }
