@@ -19,28 +19,14 @@ class ProductData implements Product
         $this->category = $category;
     }
     
-    public function store(array $data): ProductData
+    public function toArray(): array
     {
-        throw new \Exception('Method not implemented');
-    }
-
-    public function getById(int $id): ProductData
-    {
-        throw new \Exception('Method not implemented');
-    }
-
-    public function getAll(): array
-    {
-        return [];
-    }   
-
-    public function update(int $id, array $data): ProductData
-    {
-        throw new \Exception('Method not implemented');
-    }
-
-    public function delete(int $id): void
-    {
-        throw new \Exception('Method not implemented');
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'price' => $this->price,
+            'category' => $this->category
+        ];
     }
 }
