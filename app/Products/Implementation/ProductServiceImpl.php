@@ -2,8 +2,9 @@
 
 namespace App\Products\Implementation;
 
-use App\Models\Product;
-use App\Product\Repository\ProductRepository;
+use App\Product\DTO\ProductDto;
+use App\Products\Domain\ProductData;
+use App\Products\Domain\ProductRepository;
 use App\Products\Domain\ProductService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class ProductServiceImpl implements ProductService
     }
 
     /**
-    * @return Product[]|Collection
+    * @return ProductData[]|Collection
     */
     public function getaAll(): Collection
     {
@@ -29,7 +30,8 @@ class ProductServiceImpl implements ProductService
     }
     public function create(array $product): Model
     {
-        return $this->repository->create($product);
+        ProductDto::toProductModel($product);
+        return $this->repository->create(ProductDto::toProductModel($product));
     }
 
     public function update(int $id, array $product): Model

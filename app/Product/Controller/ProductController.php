@@ -3,9 +3,8 @@
 namespace App\Product\Controller;
 
 use App\Http\Controllers\BaseController;
-use App\Product\DTO\ProductDto;
 use Illuminate\Http\Request;
-use App\Product\Services\ProductServiceImpl;
+use App\Products\Implementation\ProductServiceImpl;
 
 class ProductController extends BaseController
 {

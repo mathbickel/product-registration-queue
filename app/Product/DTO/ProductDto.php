@@ -2,19 +2,18 @@
 
 namespace App\Product\DTO;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Products\Domain\ProductData;
 
 class ProductDto
 {
-    public $name;
-    public $description;
-    public $price;
-    public $balance;
+    public string $name;
+    public string $description;
+    public float $price;
+    public string $category;
 
-    public function toProductModel(Request $request): Product
+    public static function toProductModel(array $product): array
     {
-        $prod = $request->all();
-        return new Product($prod['name'], $prod['description'], $prod['price'], $prod['balance']);
+        $prod = new ProductData($product['name'], $product['description'], $product['price'], $product['category']);
+        return $prod->toArray();
     }
 }
