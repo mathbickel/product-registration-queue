@@ -6,7 +6,6 @@ use App\Products\Domain\ProductData;
 
 class ProductDto
 {
-    public int $id;
     public string $name;
     public string $description;
     public float $price;
@@ -14,6 +13,7 @@ class ProductDto
 
     public static function toProductModel(array $product): array
     {
-        return new ProductData($product['id'], $product['name'], $product['description'], $product['price'], $product['category'])->toArray();
+        $prod = new ProductData($product['name'], $product['description'], $product['price'], $product['category']);
+        return $prod->toArray();
     }
 }

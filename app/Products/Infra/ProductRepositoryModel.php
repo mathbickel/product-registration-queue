@@ -11,6 +11,7 @@ class ProductRepositoryModel implements ProductRepository
     public function __construct(
         protected ProductModel $model
     ){
+        $this->model = $model;
     }
 
     /**
