@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Products\Infra;
-abstract class ProductModel
+
+use Illuminate\Database\Eloquent\Model;
+
+class ProductModel extends Model
 {
     protected int $id;
     protected string $name;
