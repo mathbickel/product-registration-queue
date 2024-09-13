@@ -28,10 +28,11 @@ class ProductServiceImpl implements ProductService
     {
         return $this->repository->find($id);
     }
-    public function create(array $product): Model
+    public function create(array $product): ProductData
     {
-        ProductDto::toProductModel($product);
-        return $this->repository->create(ProductDto::toProductModel($product));
+        $prod = $this->repository->create(ProductDto::toProductModel($product));
+        $created = ProductDto::toProductData($prod->toArray());
+        return $created;
     }
 
     public function update(int $id, array $product): Model

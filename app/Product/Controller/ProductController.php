@@ -21,7 +21,8 @@ class ProductController extends BaseController
 
     public function store(Request $request)
     {
-        return response()->json($this->service->create($request->all()), 201);
+        $prod = $this->service->create($request->all());
+        return response()->json($prod->toArray(), 201);
     }
 
     public function getById(Request $request)
