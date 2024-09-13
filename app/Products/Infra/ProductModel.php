@@ -8,8 +8,8 @@ class ProductModel extends Model
 {
     protected $table = 'products';
 
-    // Define the fields that are mass assignable
     protected $fillable = [
+        'id',
         'name',
         'description',
         'price',
