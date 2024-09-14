@@ -4,12 +4,12 @@ namespace App\Product\Controller;
 
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
-use App\Products\Implementation\ProductServiceImpl;
+use App\Products\Domain\ProductService;
 
 class ProductController extends BaseController
 {
     public function __construct (
-        protected ProductServiceImpl $service
+        protected ProductService $service
     ) {
     }
 

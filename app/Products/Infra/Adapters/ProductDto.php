@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Product\DTO;
+namespace App\Products\Infra\Adapters;
 
 use App\Products\Domain\ProductData;
 use App\Products\Infra\ProductModel;
