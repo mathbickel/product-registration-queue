@@ -24,9 +24,11 @@ class ProductServiceImpl implements ProductService
         return $this->repository->getAll();   
     }
 
-    public function getById(int $id): Model
+    public function getById(int $id): ProductData
     {
-        return $this->repository->find($id);
+        $prod = $this->repository->find($id);
+        $productById = ProductDto::toProductData($prod->toArray());
+        return $productById;
     }
     public function create(array $product): ProductData
     {
@@ -35,9 +37,11 @@ class ProductServiceImpl implements ProductService
         return $created;
     }
 
-    public function update(int $id, array $product): Model
+    public function update(int $id, array $product): ProductData
     {
-        return $this->repository->update($id, $product);
+        $prod = $this->repository->update($id, $product);
+        $updated = ProductDto::toProductData($prod->toArray());
+        return $updated;
     }
 
     public function delete(int $id): bool
