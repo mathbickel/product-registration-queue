@@ -14,11 +14,11 @@ class Variations extends Migration
         Schema::create('variations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
-            $table->string('color');
-            $table->string('size');
-            $table->float('weight');
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
+            $table->float('weight')->nullable();
             $table->integer('balance');
-            $table->json('dimensions');
+            $table->json('dimensions')->nullable();
 
             $table->foreign('product_id')->references('id')->on('products');
             

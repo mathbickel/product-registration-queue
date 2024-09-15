@@ -24,8 +24,10 @@ class ProductDto
             $product['id'], 
             $product['name'], 
             $product['description'], 
-            $product['price'], 
-            $product['category']
+            $product['price'],
+            $product['category'],
+            $product['dimensions'],
+            $product['variationsId']
         );
     }
 }
