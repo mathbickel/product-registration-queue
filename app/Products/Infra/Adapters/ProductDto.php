@@ -21,13 +21,13 @@ class ProductDto
     public static function toProductData(array $product): ProductData
     {
         return new ProductData(
-            $product['id'], 
+            $product['id'],
             $product['name'], 
-            $product['description'], 
+            $product['description'] ?? null, 
             $product['price'],
-            $product['category'],
-            $product['dimensions'],
-            $product['variationsId']
+            $product['category'] ?? null,
+            $product['dimensions'][0],
+            $product['variationsId'] ?? null
         );
     }
 }
