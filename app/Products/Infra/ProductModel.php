@@ -14,9 +14,13 @@ class ProductModel extends Model
         'description',
         'price',
         'category',
+        'dimensions',
+        'variation_id'
     ];
 
     protected $casts = [
-        'price' => 'float'
+        'price' => 'float',
+        'dimensions' => 'array',
+        'variation_id' => 'array'
     ];
 }

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\VariationsController;
 use Illuminate\Support\Facades\Route;
-use App\Product\Controller\ProductController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VariationsController;
+
 
 Route::group(['prefix' => 'products'], function () {
     Route::get('/all', [ProductController::class, 'index'])->name('products.index');
