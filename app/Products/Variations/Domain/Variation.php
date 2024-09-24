@@ -2,7 +2,32 @@
 
 namespace App\Products\Variations\Domain;
 
-interface Variation
+class Variation extends VariationData
 {
-    public function toArray(): array;
+
+    public function __construct(array $variation)
+    {
+        parent::__construct(
+            $variation['id'],
+            $variation['product_id'],
+            $variation['color'],
+            $variation['size'],
+            $variation['weight'],
+            $variation['balance'],
+            $variation['dimensions']
+        );
+    }
+
+    protected function getVariations(): array
+    {
+        return [
+            "id" => $this->getId(),
+            "product_id" => $this->getProductId(),
+            "color" => $this->getColor(),
+            "size" => $this->getSize(),
+            "weight" => $this->getWeight(),
+            "balance" => $this->getBalance(),
+            "dimensions" => $this->getDimensions(),
+        ];
+    }
 }

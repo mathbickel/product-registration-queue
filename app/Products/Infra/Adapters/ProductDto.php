@@ -27,7 +27,7 @@ class ProductDto
             $product['price'],
             $product['category'] ?? null,
             $product['dimensions'][0],
-            $product['variationsId'] ?? null
+            $product['variations_id'] ?? null
         );
     }
 }
