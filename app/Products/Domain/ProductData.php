@@ -10,9 +10,9 @@ class ProductData implements Product
     protected float $price;
     protected string $category;
     protected array $dimensions;
-    protected int $variation_id;
+    protected array $variations;
 
-    public function __construct(int $id, string $name, string $description, float $price, string $category, array $dimensions, int $variation_id)
+    public function __construct(int $id, string $name, string $description, float $price, string $category, array $dimensions, array $variations)
     {
         $this->id = $id;
         $this->name = $name;
@@ -20,7 +20,7 @@ class ProductData implements Product
         $this->price = $price;
         $this->category = $category ?? null;
         $this->dimensions = $dimensions;
-        $this->variation_id = $variation_id ?? null;
+        $this->variations = $variations;
     }
     
     public function toArray(): array
@@ -36,7 +36,7 @@ class ProductData implements Product
                 'width' => $this->dimensions['width'],
                 'height' => $this->dimensions['height']
             ],
-            'variation_id' => $this->variation_id ?? null
+            'variations' => $this->variations ?? []
         ];
     }
 }

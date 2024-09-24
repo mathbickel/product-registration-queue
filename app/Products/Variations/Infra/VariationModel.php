@@ -3,6 +3,8 @@
 namespace App\Products\Variations\Infra;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Products\Infra\ProductModel;
+
 class VariationModel extends Model
 {
     protected $table = 'variations';
@@ -21,4 +23,9 @@ class VariationModel extends Model
         'balance' => 'integer',
         'dimensions' => 'array'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(ProductModel::class, 'product_id');
+    }
 }
