@@ -18,16 +18,8 @@ class ProductDto
         return $prod->toArray();
     }
 
-    public static function toProductData(array $product): ProductData
+    public static function toProductData(array $products): ProductData
     {
-        return new ProductData(
-            $product['id'],
-            $product['name'], 
-            $product['description'] ?? null, 
-            $product['price'],
-            $product['category'] ?? null,
-            $product['dimensions'][0],
-            $product['variations_id'] ?? null
-        );
+        return ProductData::fromArray($products);
     }
 }

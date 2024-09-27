@@ -2,6 +2,8 @@
 
 namespace App\Products\Domain;
 
+use App\Products\Variations\Domain\Variation;
+
 class ProductData implements Product
 {
     protected int $id;
@@ -12,7 +14,7 @@ class ProductData implements Product
     protected array $dimensions;
     protected array $variations;
 
-    public function __construct(int $id, string $name, string $description, float $price, string $category, array $dimensions, array $variations)
+    public function __construct(int $id, string $name, string $description, float $price, string $category, array $dimensions)
     {
         $this->id = $id;
         $this->name = $name;
@@ -20,7 +22,12 @@ class ProductData implements Product
         $this->price = $price;
         $this->category = $category ?? null;
         $this->dimensions = $dimensions;
-        $this->variations = $variations;
+        $this->variations = [];
+    }
+
+    public function addVariation(Variation $variation): void
+    {
+        $this->variations[] = $variation;
     }
     
     public function toArray(): array
@@ -36,7 +43,25 @@ class ProductData implements Product
                 'width' => $this->dimensions['width'],
                 'height' => $this->dimensions['height']
             ],
-            'variations' => $this->variations ?? []
+            'variations' => array_map(fn (Variation $variation) => $variation->getVariations(), $this->variations)
         ];
+    }
+
+    public static function fromArray(array $data): self
+    {
+        dd($data);
+        $variations = array_map(function ($variationData) {
+            return new Variation($variationData);
+        }, $data['variations'] ?? []);
+
+        return new self(
+            $data['id'],
+            $data['name'],
+            $data['description'],
+            $data['price'],
+            $data['category'],
+            $data['dimensions'],
+            $variations
+        );
     }
 }
