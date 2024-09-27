@@ -4,7 +4,6 @@ namespace App\Products\Variations\Domain;
 
 class Variation extends VariationData
 {
-
     public function __construct(array $variation)
     {
         parent::__construct(
@@ -18,7 +17,7 @@ class Variation extends VariationData
         );
     }
 
-    protected function getVariations(): array
+    public function getVariations(): array
     {
         return [
             "id" => $this->getId(),
