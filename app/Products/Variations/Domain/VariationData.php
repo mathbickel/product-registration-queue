@@ -23,8 +23,6 @@ abstract class VariationData
         $this->dimensions = $dimensions;
     }
 
-    abstract protected function getVariations(): array;
-
     protected function getId(): int
     {
         return $this->id;

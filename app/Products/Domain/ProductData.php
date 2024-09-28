@@ -12,7 +12,6 @@ class ProductData implements Product
     protected float $price;
     protected string $category;
     protected array $dimensions;
-    protected array $variations;
 
     public function __construct(int $id, string $name, string $description, float $price, string $category, array $dimensions)
     {
@@ -22,14 +21,8 @@ class ProductData implements Product
         $this->price = $price;
         $this->category = $category ?? null;
         $this->dimensions = $dimensions;
-        $this->variations = [];
     }
-
-    public function addVariation(Variation $variation): void
-    {
-        $this->variations[] = $variation;
-    }
-    
+  
     public function toArray(): array
     {
         return [
@@ -39,29 +32,10 @@ class ProductData implements Product
             'price' => $this->price,
             'category' => $this->category ?? null,
             'dimensions' => [
-                'length' => $this->dimensions['length'],
-                'width' => $this->dimensions['width'],
-                'height' => $this->dimensions['height']
-            ],
-            'variations' => array_map(fn (Variation $variation) => $variation->getVariations(), $this->variations)
+                'length' => $this->dimensions[0]['length'],
+                'width' => $this->dimensions[0]['width'],
+                'height' => $this->dimensions[0]['height']
+            ]
         ];
-    }
-
-    public static function fromArray(array $data): self
-    {
-        dd($data);
-        $variations = array_map(function ($variationData) {
-            return new Variation($variationData);
-        }, $data['variations'] ?? []);
-
-        return new self(
-            $data['id'],
-            $data['name'],
-            $data['description'],
-            $data['price'],
-            $data['category'],
-            $data['dimensions'],
-            $variations
-        );
     }
 }
