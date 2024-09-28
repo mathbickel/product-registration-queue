@@ -20,11 +20,9 @@ class ProductServiceImpl implements ProductService
     */
     public function getaAll(): Collection
     {
-        $products = $this->repository->getAll();
-        $productAll = ProductDto::toProductData($products->toArray());
-        return collect($productAll);
-
+        return $this->repository->getAll();
     }
+
 
     public function getById(int $id): ProductData
     {

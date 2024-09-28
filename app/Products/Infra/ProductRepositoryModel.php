@@ -9,9 +9,9 @@ use App\Products\Infra\ProductModel;
 class ProductRepositoryModel implements ProductRepository
 {
     public function __construct(
-        protected ProductModel $model
+        protected ProductModel $product
     ){
-        $this->model = $model;
+        $this->product = $product;
     }
 
     /**
@@ -19,17 +19,17 @@ class ProductRepositoryModel implements ProductRepository
     */
     public function getAll(): Collection
     {
-        return $this->model->all();
+        return $this->product->with('variations')->get();
     }
 
     public function find(int $id): ProductModel
     {
-        return $this->model->find($id);
+        return $this->product->find($id);
     }
 
     public function create(array $product): ProductModel
     {
-        return $this->model->create($product);
+        return $this->product->create($product);
     }
 
     public function update(int $id, array $data): ProductModel

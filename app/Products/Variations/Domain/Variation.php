@@ -16,17 +16,4 @@ class Variation extends VariationData
             $variation['dimensions']
         );
     }
-
-    public function getVariations(): array
-    {
-        return [
-            "id" => $this->getId(),
-            "product_id" => $this->getProductId(),
-            "color" => $this->getColor(),
-            "size" => $this->getSize(),
-            "weight" => $this->getWeight(),
-            "balance" => $this->getBalance(),
-            "dimensions" => $this->getDimensions(),
-        ];
-    }
 }

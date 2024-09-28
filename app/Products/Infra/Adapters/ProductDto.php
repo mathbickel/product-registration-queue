@@ -20,6 +20,13 @@ class ProductDto
 
     public static function toProductData(array $products): ProductData
     {
-        return ProductData::fromArray($products);
+        return new ProductData(
+            $products['id'], 
+            $products['name'], 
+            $products['description'], 
+            $products['price'],
+            $products['category'],
+            $products['dimensions']
+        );
     }
 }
