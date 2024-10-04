@@ -7,7 +7,6 @@ class Variation extends VariationData
     public function __construct(array $variation)
     {
         parent::__construct(
-            $variation['id'],
             $variation['product_id'],
             $variation['color'],
             $variation['size'],
