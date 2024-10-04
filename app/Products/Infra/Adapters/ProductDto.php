@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Product\DTO;
+namespace App\Products\Infra\Adapters;
 
 use App\Products\Domain\ProductData;
 use App\Products\Infra\ProductModel;
@@ -18,9 +18,15 @@ class ProductDto
         return $prod->toArray();
     }
 
-    public static function toProductData(array $product): ProductData
+    public static function toProductData(array $products): ProductData
     {
-        $prod = new ProductData($product['id'], $product['name'], $product['description'], $product['price'], $product['category']);
-        return $prod;
+        return new ProductData(
+            $products['id'], 
+            $products['name'], 
+            $products['description'], 
+            $products['price'],
+            $products['category'],
+            $products['dimensions']
+        );
     }
 }

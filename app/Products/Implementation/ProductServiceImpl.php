@@ -2,12 +2,11 @@
 
 namespace App\Products\Implementation;
 
-use App\Product\DTO\ProductDto;
+use App\Products\Infra\Adapters\ProductDto;
 use App\Products\Domain\ProductData;
 use App\Products\Domain\ProductRepository;
 use App\Products\Domain\ProductService;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 class ProductServiceImpl implements ProductService
 {
@@ -21,8 +20,9 @@ class ProductServiceImpl implements ProductService
     */
     public function getaAll(): Collection
     {
-        return $this->repository->getAll();   
+        return $this->repository->getAll();
     }
+
 
     public function getById(int $id): ProductData
     {

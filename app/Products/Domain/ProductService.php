@@ -11,7 +11,7 @@ interface ProductService
     */
     public function getaAll(): Collection;
     public function getById(int $id): ProductData;
-    public function create(array $model): ProductData;
-    public function update(int $id, array $model): ProductData;
+    public function create(array $product): ProductData;
+    public function update(int $id, array $product): ProductData;
     public function delete(int $id): bool;
 }
