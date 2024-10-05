@@ -2,18 +2,16 @@
 
 namespace App\Products\Domain;
 
-use App\Products\Variations\Domain\Variation;
-
 class ProductData implements Product
 {
     protected int $id;
     protected string $name;
-    protected string $description;
+    protected ?string $description;
     protected float $price;
-    protected string $category;
-    protected array $dimensions;
+    protected ?string $category;
+    protected ?array $dimensions;
 
-    public function __construct(int $id, string $name, string $description, float $price, string $category, array $dimensions)
+    public function __construct(int $id, string $name, ?string $description, float $price, ?string $category, ?array $dimensions)
     {
         $this->id = $id;
         $this->name = $name;
