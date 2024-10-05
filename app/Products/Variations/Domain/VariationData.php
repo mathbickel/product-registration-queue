@@ -6,22 +6,24 @@ abstract class VariationData
 {
     protected int $id;
     protected int $productId;
-    protected string $color;
-    protected string $size;
-    protected float $weight;
+    protected ?string $color;
+    protected ?string $size;
+    protected ?float $weight;
     protected int $balance;
-    protected array $dimensions;
+    protected ?array $dimensions;
     
-    public function __construct(int $id, int $productId, string $color, string $size, float $weight, int $balance, array $dimensions)
+    public function __construct(int $id, int $productId, ?string $color, ?string $size, ?float $weight, int $balance, ?array $dimensions)
     {
         $this->id = $id;
         $this->productId = $productId;
-        $this->color = $color;
-        $this->size = $size;
+        $this->color = $color ?? null;
+        $this->size = $size ?? null;
         $this->balance = $balance;
-        $this->weight = $weight;
-        $this->dimensions = $dimensions;
+        $this->weight = $weight ?? null;
+        $this->dimensions = $dimensions ?? null;
     }
+
+    abstract function toArray(): array;
 
     protected function getId(): int
     {
@@ -30,32 +32,32 @@ abstract class VariationData
     
     protected function getProductId(): int
     {
-        return $this->productId ?? null;
+        return $this->productId;
     }
 
-    protected function getColor(): string
+    protected function getColor(): ?string
     {
-        return $this->color ?? null;
+        return $this->color;
     }
 
-    protected function getSize(): string
+    protected function getSize(): ?string
     {
         return $this->size ?? null;
     }
 
     protected function getBalance(): int
     {
-        return $this->balance ?? null;
+        return $this->balance;
     }
 
-    protected function getWeight(): float
+    protected function getWeight(): ?float
     {
-        return $this->weight ?? null;
+        return $this->weight;
     }
 
-    protected function getDimensions(): array
+    protected function getDimensions(): ?array
     {
-        return $this->dimensions ?? null;
+        return $this->dimensions;
     }
 
     protected function setId(int $id): void
