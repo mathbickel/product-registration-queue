@@ -26,7 +26,7 @@ class VariationServiceImpl implements VariationService
     public function getById(int $id): VariationData
     {
         $variation = $this->repository->find($id);
-        $getById = VariationDto::toVariationData($variation->toArray());
+        $getById = VariationDto::toVariationData($variation);
         return $getById;
         
     }
@@ -34,7 +34,7 @@ class VariationServiceImpl implements VariationService
     public function create(array $variation): VariationData
     {
         $variation = $this->repository->create($variation);
-        $created = VariationDto::toVariationData($variation->toArray());
+        $created = VariationDto::toVariationData($variation);
         return $created;
 
     }
@@ -42,7 +42,7 @@ class VariationServiceImpl implements VariationService
     public function update(int $id, array $variation): VariationData
     {
         $variation = $this->repository->update($id, $variation);
-        $updated = VariationDto::toVariationData($variation->toArray());
+        $updated = VariationDto::toVariationData($variation);
         return $updated;
     }
 

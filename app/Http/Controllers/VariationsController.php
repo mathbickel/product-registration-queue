@@ -21,7 +21,7 @@ class VariationsController extends BaseController
     public function store(Request $request): \Illuminate\Http\JsonResponse
     {
         $var = $this->service->create($request->all());
-        return response()->json($var, 201);
+        return response()->json($var->toArray(), 201);
     }
 
     public function getById(Request $request): \Illuminate\Http\JsonResponse

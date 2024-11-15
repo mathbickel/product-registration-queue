@@ -27,20 +27,20 @@ class ProductServiceImpl implements ProductService
     public function getById(int $id): ProductData
     {
         $prod = $this->repository->find($id);
-        $productById = ProductDto::toProductData($prod->toArray());
+        $productById = ProductDto::toProductData($prod);
         return $productById;
     }
     public function create(array $product): ProductData
     {
         $prod = $this->repository->create(ProductDto::toProductModel($product));
-        $created = ProductDto::toProductData($prod->toArray());
+        $created = ProductDto::toProductData($prod);
         return $created;
     }
 
     public function update(int $id, array $product): ProductData
     {
         $prod = $this->repository->update($id, $product);
-        $updated = ProductDto::toProductData($prod->toArray());
+        $updated = ProductDto::toProductData($prod);
         return $updated;
     }
 
