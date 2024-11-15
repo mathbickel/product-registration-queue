@@ -2,7 +2,7 @@
 
 namespace App\Products\Infra\Adapters;
 
-use App\Products\Domain\ProductData;
+use App\Products\Domain\Product;
 use App\Products\Infra\ProductModel;
 
 class ProductDto
@@ -13,15 +13,9 @@ class ProductDto
         return $prod->toArray();
     }
 
-    public static function toProductData(ProductModel $products): ProductData
+    public static function toProductData(ProductModel $products): Product
     {
-        return new ProductData(
-            $products->id, 
-            $products->name, 
-            $products->description, 
-            $products->price, 
-            $products->category, 
-            $products->dimensions
-        );
+        $prod =  new Product($products->id, $products->name, $products->description, $products->price, $products->category, $products->dimensions);
+        return $prod;
     }
 }

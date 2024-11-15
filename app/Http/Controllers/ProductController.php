@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
 use App\Products\Domain\ProductService;
+use App\Queue\ProductQueue;
 
 class ProductController extends BaseController
 {
@@ -22,6 +23,8 @@ class ProductController extends BaseController
     public function store(Request $request): \Illuminate\Http\JsonResponse
     {
         $prod = $this->service->create($request->all());
+        $queue = new ProductQueue();
+        $queue->sendToQueue(json_encode($prod));
         return response()->json($prod->toArray(), 201);
     }
 
