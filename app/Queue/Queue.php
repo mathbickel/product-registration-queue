@@ -2,5 +2,5 @@
 
 namespace App\Queue;
 interface Queue {
-    public function sendMessage($message): \Aws\Result;
+    public function sendMessage($message): void;
 }

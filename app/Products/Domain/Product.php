@@ -15,4 +15,9 @@ class Product extends ProductData
             'dimensions' => $this->getDimensions()
         ];
     }
+
+    public function toString(): string
+    {
+        return json_encode($this->toArray());
+    }
 }
