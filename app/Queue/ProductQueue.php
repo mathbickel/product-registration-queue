@@ -2,11 +2,18 @@
 
 namespace App\Queue;
 
-use App\Queue\Client\AwsSqsQueueClient;
-class ProductQueue extends AwsSqsQueueClient 
+use App\Queue\SendMessage;
+
+class ProductQueue extends SendMessage 
 {
     public function sendToQueue($message): \Aws\Result
     {
+
         return $this->sendMessage($message);
+    }
+
+    public static function getInstance()
+    {
+        return new ProductQueue();
     }
 }

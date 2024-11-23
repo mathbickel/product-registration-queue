@@ -10,8 +10,10 @@ use App\Queue\ProductQueue;
 class ProductController extends BaseController
 {
     public function __construct (
-        protected ProductService $service
+        protected ProductService $service,
+        protected ProductQueue $queue
     ) {
+        $queue = ProductQueue::getInstance();
     }
 
     public function index(): \Illuminate\Http\JsonResponse
@@ -23,8 +25,8 @@ class ProductController extends BaseController
     public function store(Request $request): \Illuminate\Http\JsonResponse
     {
         $prod = $this->service->create($request->all());
-        $queue = new ProductQueue();
-        $queue->sendToQueue(json_encode($prod));
+        $stringMsg = $prod->toString($prod);
+        $this->queue->sendToQueue($stringMsg);
         return response()->json($prod->toArray(), 201);
     }
 
